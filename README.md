@@ -15,5 +15,5 @@ then, change centrifuge-kreport script within this page.
 
 ## docker image
 
-[docker hub](https://hub.docker.com/repository/docker/tjdrns27/centrifuge)
-`tjdrns27/centrifuge:v0.2`
+[docker hub](https://hub.docker.com/repository/docker/tjdrns27/centrifuge)\
+`docker pull tjdrns27/centrifuge:v0.2`
