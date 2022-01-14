@@ -103,16 +103,16 @@ if ($is_cnts_table) {
     $taxID = 1 if ( !isTaxIDInTree( $taxID ) ) ;
 
     if ($no_lca) {
-      $taxo_counts{$taxID} += 1/$numMatches;
-      $seq_count += 1/$numMatches;
+      $taxo_counts{$taxID} += $queryLength/$numMatches;
+      $seq_count += $queryLength/$numMatches;
     } else {
       if ( ( defined $prevReadID ) && ( $readID eq $prevReadID ) ) {
-        --$taxo_counts{$prevTaxID};
+        $taxo_counts{$prevTaxID} -= $queryLength;
         $prevTaxID = lca($prevTaxID, $taxID);
-        ++$taxo_counts{$prevTaxID};
+        $taxo_counts{$prevTaxID} += $queryLength;
       } else {
-        ++$taxo_counts{$taxID};
-        ++$seq_count;
+      	$taxo_counts{$taxID} += $queryLength;
+	$seq_count += $queryLength;
         $prevTaxID = $taxID;
       }
     }
