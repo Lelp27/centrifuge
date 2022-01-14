@@ -1,43 +1,19 @@
-# Centrifuge
-Classifier for metagenomic sequences
+# Length-based Centrifuge Kraken report
 
-[Centrifuge] is a novel microbial classification engine that enables
-rapid, accurate and sensitive labeling of reads and quantification of
-species on desktop computers.  The system uses a novel indexing scheme
-based on the Burrows-Wheeler transform (BWT) and the Ferragina-Manzini
-(FM) index, optimized specifically for the metagenomic classification
-problem. Centrifuge requires a relatively small index (4.7 GB for all
-complete bacterial and viral genomes plus the human genome) and
-classifies sequences at very high speed, allowing it to process the
-millions of reads from a typical high-throughput DNA sequencing run
-within a few minutes.  Together these advances enable timely and
-accurate analysis of large metagenomics data sets on conventional
-desktop computers
+The source code is from [DaehwanKimLab](https://github.com/DaehwanKimLab/centrifuge)
 
-The Centrifuge hompage is  http://www.ccb.jhu.edu/software/centrifuge
+original centrifuge calculate taxonomy weight based-on count.
+in long-read sequencing, every read have differnt length so that
+change it from read-count based to read-length based weight.
 
-The Centrifuge paper is available at https://genome.cshlp.org/content/26/12/1721
+only one change is in centrifuge-kreport script.
 
-The Centrifuge poster is available at http://www.ccb.jhu.edu/people/infphilo/data/Centrifuge-poster.pdf
+## Usage
 
-For more details on installing and running Centrifuge, look at MANUAL
+install the original centrifuge.
+then, change centrifuge-kreport script within this page.
 
-## Quick guide
-### Installation from source
+## docker image
 
-    git clone https://github.com/infphilo/centrifuge
-    cd centrifuge
-    make
-    sudo make install prefix=/usr/local
-
-### Building indexes
-
-We provide several indexes on the Centrifuge homepage at http://www.ccb.jhu.edu/software/centrifuge.
-Centrifuge needs sequence and taxonomy files,  as well as sequence ID to taxonomy ID mapping. 
-See the MANUAL files for details. We provide a Makefile that simplifies the building of several
-standard and custom indices
-
-    cd indices
-    make p+h+v                   # bacterial, human, and viral genomes [~12G]
-    make p_compressed            # bacterial genomes compressed at the species level [~4.2G]
-    make p_compressed+h+v        # combination of the two above [~8G]
+[docker hub](dockerhub/tjdrns27)  
+`tjdrns27/centrifuge:v0.2`
